@@ -23,7 +23,7 @@ class OrdenLavadoCamion(OrdenLavado):
     def lavadoCaja(self, lavadoCaja):
         self._lavadoCaja = lavadoCaja
 
-    def importeLavado(self)->float:
+    def importeFinal(self)->float:
         return super().importeFinal() + self.importeLavadoCabina + (0 if self.lavadoCaja is None else self.lavadoCaja.calcularImporte())
 
     def agregarLavadoCaja(self, lavadoCaja:LavadoCajaCamion)->None:

@@ -12,5 +12,14 @@ class Lavadero:
     def ordenesLavado(self):
         return self._ordenesLavado
     
-    def agregarOrden(self, orden:OrdenLavado):
+    def addOrdenLavado(self, orden:OrdenLavado):
         self.ordenesLavado[orden.numeroOrden] = orden
+
+    def importeFinalPromedioOrdenesLavado(self)->float:
+        return sum(list(map(lambda x: x.importeFinal(), self.ordenesLavado.values())))
+
+    def cantidadOrdenesLavadoAutoBusDesdeHasta(self, desde:int, hasta:int):
+        return len(list(filter(lambda x: x.__class__.__name__ == "OrdenLavadoAutobus" and desde <= x.cantidadAsientos <= hasta,self.ordenesLavado.values())))
+
+    def existeOrdenLavado(self, nroOrden:int)->bool:
+        return True if self.ordenesLavado[nroOrden] else False
